@@ -18,6 +18,7 @@ class Hub:
         self.do_not_ship_addresses = []  # Address IDs that will not be loaded onto truck.
         self.do_not_ship(import_packages[:])  # Function call to construct do_not_ship variables.
         self.warehouse = [x for x in import_packages if x not in self.do_not_ship_packages]  # Package selection pool.
+        self.reset = False
 
     def do_not_ship(self, packages):
         """Loops through all packages and identifies delayed + bad address packages.
@@ -88,6 +89,7 @@ class Hub:
         self.urgent_addresses = []
         self.unique_count = 0
         self.fastest_route = [INT_MAX, [INT_MAX], INT_MAX]
+        self.reset = False
 
         # Construct function variables.
         count = 0  # Count of packages.
@@ -362,14 +364,17 @@ class Hub:
         # This is a brute force method to ensure all deliveries for truck 2 arrive at their destination on time.
         if self.fastest_route[1][-2] in self.urgent_addresses and self.truck.identifier == 2:
             print("Error: One of the packages will not make it to its destination on time. Restarting function.")
-            self.load_truck(self.truck)
-
-        # Remove packages from warehouse.
-        for package in bay:
-            self.warehouse.remove(package)
+            self.reset = True
+        else:
+            # Remove packages from warehouse.
+            for package in bay:
+                self.warehouse.remove(package)
 
     def finalize_truck(self, count, bay):
         """Load the truck with the packages, route map, and route weights in respective order. O(N^2)."""
+        if self.reset:
+            self.load_truck(self.truck)
+            return
         self.truck.count = count
         self.truck.available = False
         self.truck.address_map = self.fastest_route[1][:]
@@ -381,7 +386,7 @@ class Hub:
                 if package[-1] == indexes:  # Loads truck with package IDs in specific order.
                     self.truck.package_map.append(int(package[0]))
                     self.truck.bay.append(package)
-        self.truck.next_weight = self.truck.weight_map[0]  # Next route weight is always first address index weight.
+        self.truck.next_weight = self.truck.weight_map[0]  # Next route weight is always first address ID
 
         for package in self.truck.package_map:  # Update hash table status.
             self.simulation.hash_table[package][-1] = "Loaded on Truck " + str(self.truck.identifier)

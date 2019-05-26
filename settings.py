@@ -10,5 +10,5 @@ SEED_COUNT = 30
 SIMULATION_START_TIME = "8:00:00"
 FLIGHT_DELAY_TIME = "9:05:00"
 BAD_ADDRESS_TIME = "10:20:00"
-DISTANCE_FILE = 'distances.csv'
-PACKAGE_FILE = 'packages.csv'
+DISTANCE_FILE = 'excel_files/distances.csv'
+PACKAGE_FILE = 'excel_files/packages.csv'
