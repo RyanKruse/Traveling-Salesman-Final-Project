@@ -54,11 +54,11 @@ class Simulation:
 
         # Truck 1 Line Buffer Subtraction Amount - Because the text length that appears inside the truck dynamically
         # changes, this subtracts that text length from the Truck Line Buffer so that the | character appears correctly.
-        sub_1 = len(str(self.truck_1.package_map))
-        sub_2 = len(str(self.truck_1.address_map))
-        sub_3 = len(str(self.truck_1.weight_map)) + len(str(round(self.truck_1.weight, 1)))
+        sub_1 = len(str(self.truck_1.package_ids))
+        sub_2 = len(str(self.truck_1.locations))
+        sub_3 = len(str(self.truck_1.distances)) + len(str(round(self.truck_1.weight, 1)))
         sub_4 = len(str(round(self.truck_1.miles, 1))) + len(str(self.truck_1.count)) + \
-            len(str(self.index_addresses[self.truck_1.location]))
+            len(str(self.index_addresses[self.truck_1.current]))
 
         # Example: A box appears as...                 _____________
         #                                             | D: []       |
@@ -100,12 +100,12 @@ class Simulation:
         # Slicers are used for the truck location string as some unique_count are too long to fit properly in the truck.
         truck = self.truck_1
         c2_r1 = "__________________________________________________________________________________"
-        c2_r2 = "/    | Package IDs: " + str(truck.package_map) + self.space(add_1, sub_1) + "|"
-        c2_r3 = "/---, | Address Route Index: " + str(truck.address_map) + self.space(add_2, sub_2) + "|"
-        c2_r4 = "-----# ==| | Route Weight: " + str(truck.weight_map) + " = " + str(round(truck.weight, 1)) + \
+        c2_r2 = "/    | Package IDs: " + str(truck.package_ids) + self.space(add_1, sub_1) + "|"
+        c2_r3 = "/---, | Address Route Index: " + str(truck.locations) + self.space(add_2, sub_2) + "|"
+        c2_r4 = "-----# ==| | Route Weight: " + str(truck.distances) + " = " + str(round(truck.weight, 1)) + \
                 self.space(add_3, sub_3) + "|"
         c2_r5 = "| :) # ==| | Miles: " + str(round(truck.miles, 1)) + " || Packages: " + str(truck.count) + \
-                " || Location: " + str(self.index_addresses[truck.location][:41]) + self.space(add_4, sub_4) + "|"
+                " || Location: " + str(self.index_addresses[truck.current][:41]) + self.space(add_4, sub_4) + "|"
         c2_r6 = "-----'----#   | |__________________________________________________________________________________|"
         c2_r7 = "|)___()  '#   |______====____   \________________________________________________________|"
         c2_r8 = '[_/,-,\\"--"------ //,-,  ,-,\\\\\\   |/                               //,-,  ,-,  ,-,\\\\ __#'
@@ -114,11 +114,11 @@ class Simulation:
                  clock_buffer_1 + str(self.time) + "  |" + clock_buffer_2 + "----'-'--'-'--'-'"
 
         # Truck 2 Line Buffer Subtraction Amount - Used for subtracting spaces from the Truck 2 Line Buffer.
-        sub_5 = len(str(self.truck_2.package_map))
-        sub_6 = len(str(self.truck_2.address_map))
-        sub_7 = len(str(self.truck_2.weight_map)) + len(str(round(self.truck_2.weight, 1)))
+        sub_5 = len(str(self.truck_2.package_ids))
+        sub_6 = len(str(self.truck_2.locations))
+        sub_7 = len(str(self.truck_2.distances)) + len(str(round(self.truck_2.weight, 1)))
         sub_8 = len(str(round(self.truck_2.miles, 1))) + len(str(self.truck_2.count)) + \
-            len(str(self.index_addresses[self.truck_2.location]))
+            len(str(self.index_addresses[self.truck_2.current]))
 
         # Truck 2 Leading Space Strings - This determines how much space appears before truck characters are displayed.
         c3_r1 = self.space(25)
@@ -135,12 +135,12 @@ class Simulation:
         # Truck 2 String Construction - Constructs each row of the truck string and includes valuable truck information.
         truck = self.truck_2
         c4_r1 = "__________________________________________________________________________________"
-        c4_r2 = "/    | Package IDs: " + str(truck.package_map) + self.space(add_1, sub_5) + "|"
-        c4_r3 = "/---, | Address Route Index: " + str(truck.address_map) + self.space(add_2, sub_6) + "|"
-        c4_r4 = "-----# ==| | Route Weight: " + str(truck.weight_map) + " = " + str(round(truck.weight, 1)) + \
+        c4_r2 = "/    | Package IDs: " + str(truck.package_ids) + self.space(add_1, sub_5) + "|"
+        c4_r3 = "/---, | Address Route Index: " + str(truck.locations) + self.space(add_2, sub_6) + "|"
+        c4_r4 = "-----# ==| | Route Weight: " + str(truck.distances) + " = " + str(round(truck.weight, 1)) + \
                 self.space(add_3, sub_7) + "|"
         c4_r5 = "| :) # ==| | Miles: " + str(round(truck.miles, 1)) + " || Packages: " + str(truck.count) + \
-                " || Location: " + str(self.index_addresses[truck.location][:41]) + self.space(add_4, sub_8) + "|"
+                " || Location: " + str(self.index_addresses[truck.current][:41]) + self.space(add_4, sub_8) + "|"
         c4_r6 = "-----'----#   | |__________________________________________________________________________________|"
         c4_r7 = "|)___()  '#   |______====____   \________________________________________________________|"
         c4_r8 = '[_/,-,\\"--"------ //,-,  ,-,\\\\\\   |/                               //,-,  ,-,  ,-,\\\\ __#'
@@ -231,22 +231,22 @@ class Simulation:
         elif self.time.compare_time(BAD_ADDRESS_TIME):  # Packages with bad addresses are fixed.
             self.hub.address_fixed()
         elif not self.hub.warehouse and not self.hub.do_not_ship_packages and \
-                not self.truck_1.package_map and not self.truck_2.package_map:  # All packages are delivered.
+                not self.truck_1.package_ids and not self.truck_2.package_ids:  # All packages are delivered.
             self.complete()
 
     def load(self, truck):
         """Attempts to load truck at the HUB; truck must be declared available and must be located in HUB. O(1)."""
-        if truck.available and truck.location == 0:  # Checks truck availability and location.
+        if truck.available and truck.current == 0:  # Checks truck availability and location.
             self.hub.load_truck(truck)
 
     def drive(self, truck):
         """Drives the truck. Each time this is called, truck drives one second. O(1)."""
-        if truck.address_map:  # Checks if truck has an address to drive to.
+        if truck.locations:  # Checks if truck has an address to drive to.
             truck.drive()
 
     def deliver(self, truck):
         """Delivers a package from the truck if it has arrived at package location. O(1)."""
-        if truck.next_weight <= 0 and truck.address_map:  # Checks if truck arrived and has an address to drive to.
+        if truck.next_distance <= 0 and truck.locations:  # Checks if truck arrived and has an address to drive to.
             truck.deliver_package()  # Deliver package. If it arrives at hub, this step does nothing.
             truck.next_address()  # Checks for next address to drive to. If empty, this step checks if truck is in HUB.
             truck.print_simulation()  # Prints the simulation and waits for another GUI input.
