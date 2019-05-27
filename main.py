@@ -1,7 +1,6 @@
 # Made by Ryan Kruse #001099380.
 
-from prepper import Prepper
-from simulation import Simulation
+from simulation import Prepper, Simulation
 
 prepper = Prepper()
 prepper.execute()
