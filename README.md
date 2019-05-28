@@ -5,14 +5,16 @@ In this final project, I apply the algorithms and data structures studied at WGU
 	<img src="supporting_files/Truck_1_Image.PNG"></img>
 </p>
 
-## What is the objective?
-From the Project Guidelines Document: "The Western Governors University Parcel Service needs to determine the best route and delivery distribution for their Daily Local Deliveries (DLD) because packages are not currently being consistently delivered by their promised deadline. The Salt Lake City DLD route has three trucks, two drivers, and an average of 40 packages to deliver each day; each package has specific criteria and delivery requirements.
+## Project Task Objective
+From the [Project Guidelines](https://github.com/RyanKruse/WGUPS_Final_Project/blob/master/supporting_files/Project_Guidelines.docx?raw=true): "The Western Governors University Parcel Service needs to determine the best route and delivery distribution for their Daily Local Deliveries (DLD) because packages are not currently being consistently delivered by their promised deadline. The Salt Lake City DLD route has three trucks, two drivers, and an average of 40 packages to deliver each day; each package has specific criteria and delivery requirements.
 
-"Your task is to determine the best algorithm, write code, and present a solution where all 40 packages, listed in the attached 'WGUPS Package File,' will be delivered on time with the least number of miles added to the combined mileage total of all trucks. The specific delivery locations and distances to each location are given in the attached 'WGUPS Distance Table.' In addition, you should keep in mind that the supervisor should be able to see, at assigned points, the progress of each truck and its packages by any of the variables listed in the “WGUPS Package File,” including what has been delivered and what time the delivery occurred.""
+"Your task is to determine the best algorithm, write code, and present a solution where all 40 packages, listed in the attached 'WGUPS Package File,' will be delivered on time with the least number of miles added to the combined mileage total of all trucks. The specific delivery locations and distances to each location are given in the attached 'WGUPS Distance Table.' In addition, you should keep in mind that the supervisor should be able to see, at assigned points, the progress of each truck and its packages by any of the variables listed in the 'WGUPS Package File,' including what has been delivered and what time the delivery occurred."
 
 
-## How does the program work?
-The environment runs in Python 3.6, requires no external libraries or APIs, and the IDE of choice is Pycharm. The communication protocol used in this project is by storing all data in class variables and executing all algorithms from class functions. The entire simulation runs in this simulation execute function, which appears as below:
+## Overview of Data Structures
+The environment runs in Python 3.6, requires no external libraries or APIs, and the IDE of choice is Pycharm. The communication protocol used in this project is by storing all data in class variables and executing all algorithms from class functions. Should one class need another variable from another class, a reference is made for that class and the variable is copied from it. The variable contained in each class are useful for executing the functions located in that class. The Hub class contains loading algorithms, the Truck class contains delivery algorithms, the Simulation class contains ticking algorithms, and the Clock class contains time algorithm.
+
+The entire simulation runs in this execute function, which appears in pseudocode as below:
 
 
 <b>Execute</b>
@@ -30,8 +32,8 @@ While True:
 
 This function handles all the looping events every second. When it determines all packages are delivered, the while loop ends. All simulation connections and data exchanges occurs in the algorithms that appears in this execute function. In each algorithm are lower level algorithms that handle lower level details. At a high level overview, these algorithms mentioned are the primary communication protocols to run the simulation and exchange data for each simulation tick.
 
-## How do the algorithms work?
-The package loading algorithms are located in the Hub class. Each algorithm is designed to maximize optimization and serve a functional role in minimizing the accrued number of miles for delivery. Below is the pseudocode for each algorithm along with an explanation:
+## Overview of Algorithms
+There are many algorithms in this program. The algorithms worth examining are the ones that that select the packages and load the truck. These algorithms are called Do_Not_Ship, Load_Truck, and Hamiltonian_Cycle. Each algorithm is designed to maximize optimization and serve a functional role in minimizing the accrued number of miles for delivery. Below is the pseudocode for each algorithm:
 
 
 <b>Do_Not_Ship</b>
@@ -98,14 +100,18 @@ Construct bitmap – O(N)
 				Visit location
 				Increase total miles
 				Update route history
-				Update route miles
+				Update miles history
 				Call Hamiltonian_Cycle
 ```
 
 The third algorithm <i>Hamiltonian_Cycle</i> finds the lowest mileage route to deliver all packages to their destinations. The algorithm begins with only the HUB visited and all other locations unvisited. It then recursively visits every location from every other location, in every possible sequence, until all locations are visited. Each time the base case is reached, where all locations are visited, the algorithm checks if the route traversal has the lowest number of miles. If the route is the lowest, it saves information about the route. Information saved includes the total number of miles, the address IDs traversed in sequence, and the miles incurred for each address ID. This information is later passed onto the truck which then begins deliveries.
 
+<p align="center">
+	<img src="supporting_files/Salt_Lake_City_Downtown.png"></img>
+</p>
+
 ## Additional Comments
-Further explanation about the program can be found in the project essay files. As of submitting this project, it currently holds the university record for the lowest amount of miles to deliver all packages at 76.1 total miles. Thank you for checking out this GitHub repository!
+Further explanation about the program can be found in the [Project Essay](https://github.com/RyanKruse/WGUPS_Final_Project/blob/master/supporting_files/Project_Essay.docx?raw=true). As of submitting this project, it currently holds the university record for the lowest amount of miles to deliver all packages at 76.1 total miles. Thank you for checking out this GitHub repository!
 
 ## Sources
 1.	Lysecky, R. and Vahid, F. (2019). C950: Data Structures and Algorithms II. [online] ZyBooks.com. Available at: 	https://learn.zybooks.com/zybook/WGUC950AY20182019 [Accessed 20 May 2019].
