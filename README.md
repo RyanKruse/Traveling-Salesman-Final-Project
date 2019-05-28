@@ -13,7 +13,9 @@ The program developed must pay careful attention to many different variables to 
 ## How does the program work?
 The environment runs in Python 3.6, requires no external libraries or APIs, and the IDE of choice is Pycharm. The communication protocol used in this project is by storing all data in class variables and executing all algorithms from class functions. The entire simulation runs in this simulation execute function, which appears as below:
 
-<b>Execute</b>
+<p align="center">
+	<b>Execute</b>
+</p>
 ```
 Setup Simulation
 While True:
@@ -31,7 +33,10 @@ This function handles all the looping events every second. When it determines al
 ## How do the algorithms work?
 The package loading algorithms are located in the Hub class. Each algorithm is designed to maximize optimization and serve a functional role in minimizing the accrued number of miles for delivery. Below is the pseudocode for each algorithm along with an explanation:
 
-<b>Do_Not_Ship</b>
+
+<p align="center">
+	<b>Do_Not_Ship</b>
+</p>
 ```
 Loop through all packages – O(N²)
 	If package is delayed or has bad address then
@@ -45,7 +50,9 @@ Loop through all packages – O(N²)
 The first algorithm <i>Do_Not_Ship</i> separates which packages should and should not be available for loading onto the trucks. Packages that are delayed or have a bad address become unavailable for loading. Packages that share an address with one of the delayed packages also become unavailable for loading. This is programmed such that the trucks can be loaded with as many packages that are delivered to same address at once.
 
 
-<b>Load_Truck</b>
+<p align="center">
+	<b>Load_Truck</b>
+</p>
 ```
 Loop through all packages – O(N²)
 	If package cannot be loaded due to truck number then
@@ -77,7 +84,7 @@ If truck is under capacity then
 	Load truck with saved package IDs – O(N)
 ```
 
-The second algorithm <i>Load_Truck</i> will prioritize which packages should be loaded onto the truck. It starts by selecting which packages have delivery deadlines and loads these packages first. Next, it loops M number of times and begins randomly selecting packages to load onto the truck. Each loop calls the <i>Hamiltonian Cycle/<i> algorithm to find the lowest route miles to deliver all packages to their destinations. If the route miles is the lowest seen out of all M loops it will save the package IDs. When the loop finishes, the truck is loaded with the saved package IDs.
+The second algorithm <i>Load_Truck</i> will prioritize which packages should be loaded onto the truck. It starts by selecting which packages have delivery deadlines and loads these packages first. Next, it loops M number of times and begins randomly selecting packages to load onto the truck. Each loop calls the <i>Hamiltonian Cycle</i> algorithm to find the lowest route miles to deliver all packages to their destinations. If the route miles is the lowest seen out of all M loops it will save the package IDs. When the loop finishes, the truck is loaded with the saved package IDs.
 
 
 <b>Hamiltonian_Cycle</b>
@@ -102,9 +109,7 @@ Construct bitmap – O(N)
 The third algorithm <i>Hamiltonian_Cycle</i> finds the lowest mileage route to deliver all packages to their destinations. The algorithm begins with only the HUB visited and all other locations unvisited. It then recursively visits every location from every other location, in every possible sequence, until all locations are visited. Each time the base case is reached, where all locations are visited, the algorithm checks if the route traversal has the lowest number of miles. If the route is the lowest, it saves information about the route. Information saved includes the total number of miles, the address IDs traversed in sequence, and the miles incurred for each address ID. This information is later passed onto the truck which then begins deliveries.
 
 ## Additional Comments
-Further explanation about the program can be found in the project essay files. As of submitting this project, it currently holds the university record for the lowest amount of miles to deliver all packages at 76.1 total miles.
-
-Thank you for checking out this GitHub repository!
+Further explanation about the program can be found in the project essay files. As of submitting this project, it currently holds the university record for the lowest amount of miles to deliver all packages at 76.1 total miles. Thank you for checking out this GitHub repository!
 
 ## Sources
 1.	Lysecky, R. and Vahid, F. (2019). C950: Data Structures and Algorithms II. [online] ZyBooks.com. Available at: 	https://learn.zybooks.com/zybook/WGUC950AY20182019 [Accessed 20 May 2019].
