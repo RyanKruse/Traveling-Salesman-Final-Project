@@ -1,21 +1,21 @@
 # WGUPS Final Project
-In this final project, I apply the algorithms and data structures studied at WGU to solve a real world programming problem. This program is designed to find the least number of miles to deliver all packages from a warehouse. An implementation of a random algorithm is used to find packages to load onto each truck. A [Hamiltonian Cycle](https://youtu.be/JE0JE8ce1V0) algorithm is then used to find the best route.
+In this final project, I apply the algorithms and data structures studied at WGU to solve a real world programming problem. This program is designed to find the best routes deliver all warehouse packages while incurring the least number of miles. This program follows all simulation rules and meets the special requirements for all package deliveries.
 
 <p align="center">
-	<img src="screenshots/Truck_1.PNG"></img>
+	<img src="supporting_files/Truck_1_Image.PNG"></img>
 </p>
 
 ## What is the objective?
-The objective of this assignment is to drive the least number of miles to deliver all packages from a warehouse. There are 40 packages in the warehouse and there are 26 possible delivery destinations. The warehouse has 2 trucks that can make these deliveries. Many packages have special instructions or delivery deadlines that add layers of complexity.
+From the Project Guidelines Document: "The Western Governors University Parcel Service needs to determine the best route and delivery distribution for their Daily Local Deliveries (DLD) because packages are not currently being consistently delivered by their promised deadline. The Salt Lake City DLD route has three trucks, two drivers, and an average of 40 packages to deliver each day; each package has specific criteria and delivery requirements.
 
-The program developed must pay careful attention to many different variables to ensure all package instructions and deadlines are met while traveling the least number of miles. The program must also include an array of GUI features to simulate a manager utilizing the software.
+"Your task is to determine the best algorithm, write code, and present a solution where all 40 packages, listed in the attached 'WGUPS Package File,' will be delivered on time with the least number of miles added to the combined mileage total of all trucks. The specific delivery locations and distances to each location are given in the attached 'WGUPS Distance Table.' In addition, you should keep in mind that the supervisor should be able to see, at assigned points, the progress of each truck and its packages by any of the variables listed in the “WGUPS Package File,” including what has been delivered and what time the delivery occurred.""
+
 
 ## How does the program work?
 The environment runs in Python 3.6, requires no external libraries or APIs, and the IDE of choice is Pycharm. The communication protocol used in this project is by storing all data in class variables and executing all algorithms from class functions. The entire simulation runs in this simulation execute function, which appears as below:
 
-<p align="center">
-	<b>Execute</b>
-</p>
+
+<b>Execute</b>
 ```
 Setup Simulation
 While True:
@@ -34,9 +34,7 @@ This function handles all the looping events every second. When it determines al
 The package loading algorithms are located in the Hub class. Each algorithm is designed to maximize optimization and serve a functional role in minimizing the accrued number of miles for delivery. Below is the pseudocode for each algorithm along with an explanation:
 
 
-<p align="center">
-	<b>Do_Not_Ship</b>
-</p>
+<b>Do_Not_Ship</b>
 ```
 Loop through all packages – O(N²)
 	If package is delayed or has bad address then
@@ -50,9 +48,7 @@ Loop through all packages – O(N²)
 The first algorithm <i>Do_Not_Ship</i> separates which packages should and should not be available for loading onto the trucks. Packages that are delayed or have a bad address become unavailable for loading. Packages that share an address with one of the delayed packages also become unavailable for loading. This is programmed such that the trucks can be loaded with as many packages that are delivered to same address at once.
 
 
-<p align="center">
-	<b>Load_Truck</b>
-</p>
+<b>Load_Truck</b>
 ```
 Loop through all packages – O(N²)
 	If package cannot be loaded due to truck number then

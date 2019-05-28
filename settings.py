@@ -10,5 +10,5 @@ SEED_COUNT = 30
 SIMULATION_START_TIME = "8:00:00"
 FLIGHT_DELAY_TIME = "9:05:00"
 BAD_ADDRESS_TIME = "10:20:00"
-DISTANCE_FILE = 'supporting_files/distances.csv'
-PACKAGE_FILE = 'supporting_files/packages.csv'
+DISTANCE_FILE = 'supporting_files/WGUPS_Distance_Table.csv'
+PACKAGE_FILE = 'supporting_files/WGUPS_Package_File.csv'
