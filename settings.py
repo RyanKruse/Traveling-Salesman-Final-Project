@@ -1,6 +1,5 @@
 # Settings
 AUTHOR = "Ryan Kruse"
-STUDENT = "#001099380"
 GITHUB = "https://github.com/RyanKruse"
 TRUCK_STORAGE_LIMIT = 16
 TRUCK_SPEED_PER_MILE = 18

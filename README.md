@@ -1,5 +1,5 @@
 # Traveling Salesman Final Project
-In this final project, I apply the algorithms and data structures studied to solve a variation of the traveling salesman problem. This program is designed to find the shortest route to deliver all packages while incurring the least number of miles. This program follows all simulation rules and meets the special requirements for all package deliveries.
+In this project, I apply the algorithms and data structures studied to solve a variation of the traveling salesman problem. This program is designed to find the shortest route to deliver all packages while incurring the least number of miles. This program follows all simulation rules and meets the special requirements for all package deliveries.
 
 <p align="center">
 	<img src="supporting_files/Truck_1_Image.PNG"></img>
@@ -38,7 +38,7 @@ This function handles all the looping events every second. When it determines al
 
 ## Algorithms
 
-There are many algorithms in this program. The algorithms worth examining are the ones that that select the packages and load the truck. These algorithms are called Do_Not_Ship, Load_Truck, and Hamiltonian_Cycle. Each algorithm is designed to maximize optimization and serve a functional role in minimizing the accrued number of miles for delivery. Below is the pseudocode for each algorithm:
+There are many algorithms in this program. The algorithms worth examining are the ones that that select the packages and load the truck. These algorithms are called <i>Do_Not_Ship</i>, <i>Load_Truck</i>, and <i>Hamiltonian_Cycle</i>. Each algorithm is designed to maximize optimization and serve a functional role in minimizing the accrued number of miles for delivery. Below is the pseudocode for each algorithm:
 
 
 <b>Do_Not_Ship</b>
@@ -87,7 +87,7 @@ If truck is under capacity then
 	Load truck with saved package IDs – O(N)
 ```
 
-The second algorithm <i>Load_Truck</i> will prioritize which packages should be loaded onto the truck. It starts by selecting which packages have delivery deadlines and loads these packages first. Next, it loops M number of times and begins randomly selecting packages to load onto the truck. Each loop calls the <i>Hamiltonian Cycle</i> algorithm to find the lowest route miles to deliver all packages to their destinations. If the route miles is the lowest seen out of all M loops it will save the package IDs. When the loop finishes, the truck is loaded with the saved package IDs.
+The second algorithm <i>Load_Truck</i> will prioritize which packages should be loaded onto the truck. It starts by selecting which packages have delivery deadlines and loads these packages first. Next, it loops M number of times and begins randomly selecting packages to load onto the truck. Each loop calls the <i>Hamiltonian_Cycle</i> algorithm to find the lowest route miles to deliver all packages to their destinations. If the route miles is the lowest seen out of all M loops it will save the package IDs. When the loop finishes, the truck is loaded with the saved package IDs.
 
 
 <b>Hamiltonian_Cycle</b>
@@ -117,7 +117,7 @@ The third algorithm <i>Hamiltonian_Cycle</i> finds the lowest mileage route to d
 
 ## Additional Comments
 
-As of submitting this project, it holds a record for the least amount of miles to deliver all packages at 76.1 total miles. Thank you for checking out this GitHub repository! This program was very fun to build.
+As of submitting this project, it holds one of the best records for the least amount of miles to deliver all packages, at 76.1 total miles! Thank you for checking out this GitHub repository!
 
 ## Sources
 1.	Lysecky, R. and Vahid, F. (2019). C950: Data Structures and Algorithms II. [online] ZyBooks.com. Available at: 	https://learn.zybooks.com/zybook/WGUC950AY20182019 [Accessed 20 May 2019].
