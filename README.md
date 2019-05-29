@@ -1,14 +1,16 @@
-# WGUPS Final Project
-In this final project, I apply the algorithms and data structures studied at WGU to solve a real world programming problem. This program is designed to find the best routes deliver all warehouse packages while incurring the least number of miles. This program follows all simulation rules and meets the special requirements for all package deliveries.
+# Amazon Distribution Center Final Project
+In this final project, I apply the algorithms and data structures studied to solve a variation of the traveling salesman problem. This program is designed to find the shortest route to deliver all packages while incurring the least number of miles. This program follows all simulation rules and meets the special requirements for all package deliveries.
 
 <p align="center">
 	<img src="supporting_files/Truck_1_Image.PNG"></img>
 </p>
 
-## Project Task Objective
-From the [Project Guidelines](https://github.com/RyanKruse/WGUPS_Final_Project/blob/master/supporting_files/Project_Guidelines.docx?raw=true): "The Western Governors University Parcel Service needs to determine the best route and delivery distribution for their Daily Local Deliveries (DLD) because packages are not currently being consistently delivered by their promised deadline. The Salt Lake City DLD route has three trucks, two drivers, and an average of 40 packages to deliver each day; each package has specific criteria and delivery requirements.
+## Project Objective
+Amazon needs to determine the best route and delivery distribution for their Daily Local Deliveries (DLD) because packages are not currently being consistently delivered by their promised deadline. The Salt Lake City Distribution Center has three trucks, two drivers, and an average of 40 packages to deliver each day; each package has specific criteria and delivery requirements.
 
-"Your task is to determine the best algorithm, write code, and present a solution where all 40 packages, listed in the attached 'WGUPS Package File,' will be delivered on time with the least number of miles added to the combined mileage total of all trucks. The specific delivery locations and distances to each location are given in the attached 'WGUPS Distance Table.' In addition, you should keep in mind that the supervisor should be able to see, at assigned points, the progress of each truck and its packages by any of the variables listed in the 'WGUPS Package File,' including what has been delivered and what time the delivery occurred."
+North American Amazon Logistics has tasked you to determine the best algorithm, write code, and present a solution where all 40 packages, listed in the attached 'Package_Table.csv,' will be delivered on time with the least number of miles added to the combined mileage total of all trucks. The specific delivery locations and distances to each location are given in the attached 'Distance_Matrix.csv.' In addition, you should keep in mind that the operations manager should be able to see, at assigned points, the progress of each truck and its packages listed, including what has been delivered and what time the delivery occurred."
+
+The intent is to use this solution (program) for this specific location and to use the same program in many cities in each state where Amazon has a presence.
 
 
 ## Overview of Data Structures
@@ -111,7 +113,7 @@ The third algorithm <i>Hamiltonian_Cycle</i> finds the lowest mileage route to d
 </p>
 
 ## Additional Comments
-Further explanation about the program can be found in the [Project Essay](https://github.com/RyanKruse/WGUPS_Final_Project/blob/master/supporting_files/Project_Essay.docx?raw=true). As of submitting this project, it currently holds the university record for the lowest amount of miles to deliver all packages at 76.1 total miles. Thank you for checking out this GitHub repository!
+As of submitting this project, it holds one of the fastest records for the least amount of miles to deliver all packages, at 76.1 total miles! Thank you for checking out this GitHub repository!
 
 ## Sources
 1.	Lysecky, R. and Vahid, F. (2019). C950: Data Structures and Algorithms II. [online] ZyBooks.com. Available at: 	https://learn.zybooks.com/zybook/WGUC950AY20182019 [Accessed 20 May 2019].
