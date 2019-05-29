@@ -1,16 +1,17 @@
-# Amazon Distribution Center Final Project
+# Distribution Center Final Project
 In this final project, I apply the algorithms and data structures studied to solve a variation of the traveling salesman problem. This program is designed to find the shortest route to deliver all packages while incurring the least number of miles. This program follows all simulation rules and meets the special requirements for all package deliveries.
 
+## Project Objective
+
 <p align="center">
-	<img src="supporting_files/Truck_1_Image.PNG"></img>
+	<img src="supporting_files/Amazon_Fulfillment_Logo.PNG"></img>
 </p>
 
-## Project Objective
-Amazon needs to determine the best route and delivery distribution for their Daily Local Deliveries (DLD) because packages are not currently being consistently delivered by their promised deadline. The Salt Lake City Distribution Center has three trucks, two drivers, and an average of 40 packages to deliver each day; each package has specific criteria and delivery requirements.
+Amazon.com needs to determine the best route and delivery distribution for their Daily Local Deliveries (DLD) because packages are not currently being consistently delivered by their promised deadline. The Salt Lake City Fulfillment Center has three trucks, two drivers, and an average of 40 Prime packages to deliver each day; each package has specific criteria and delivery requirements.
 
-North American Amazon Logistics has tasked you to determine the best algorithm, write code, and present a solution where all 40 packages, listed in the attached 'Package_Table.csv,' will be delivered on time with the least number of miles added to the combined mileage total of all trucks. The specific delivery locations and distances to each location are given in the attached 'Distance_Matrix.csv.' In addition, you should keep in mind that the operations manager should be able to see, at assigned points, the progress of each truck and its packages listed, including what has been delivered and what time the delivery occurred."
+North American Amazon Logistics has tasked you to determine the best algorithm, write code, and present a solution where all 40 packages, listed in the attached 'Package_Table.csv,' will be delivered on time with the least number of miles added to the combined mileage total of all trucks. The specific delivery locations and distances to each location are given in the attached 'Distance_Matrix.csv.' In addition, you should keep in mind that the supervisor should be able to see, at assigned points, the progress of each truck and its packages listed by any of the variables listed in the “Package_Table.csv,” including what has been delivered and what time the delivery occurred."
 
-The intent is to use this solution (program) for this specific location and to use the same program in many cities in each state where Amazon has a presence.
+The intent is to use this solution (program) for this specific location and to use the same program in many cities in each state where Amazon.com has a presence.
 
 
 ## Overview of Data Structures
@@ -35,6 +36,11 @@ While True:
 This function handles all the looping events every second. When it determines all packages are delivered, the while loop ends. All simulation connections and data exchanges occurs in the algorithms that appears in this execute function. In each algorithm are lower level algorithms that handle lower level details. At a high level overview, these algorithms mentioned are the primary communication protocols to run the simulation and exchange data for each simulation tick.
 
 ## Overview of Algorithms
+
+<p align="center">
+	<img src="supporting_files/Truck_1_Image.PNG"></img>
+</p>
+
 There are many algorithms in this program. The algorithms worth examining are the ones that that select the packages and load the truck. These algorithms are called Do_Not_Ship, Load_Truck, and Hamiltonian_Cycle. Each algorithm is designed to maximize optimization and serve a functional role in minimizing the accrued number of miles for delivery. Below is the pseudocode for each algorithm:
 
 
@@ -108,11 +114,11 @@ Construct bitmap – O(N)
 
 The third algorithm <i>Hamiltonian_Cycle</i> finds the lowest mileage route to deliver all packages to their destinations. The algorithm begins with only the HUB visited and all other locations unvisited. It then recursively visits every location from every other location, in every possible sequence, until all locations are visited. Each time the base case is reached, where all locations are visited, the algorithm checks if the route traversal has the lowest number of miles. If the route is the lowest, it saves information about the route. Information saved includes the total number of miles, the address IDs traversed in sequence, and the miles incurred for each address ID. This information is later passed onto the truck which then begins deliveries.
 
+## Additional Comments
 <p align="center">
-	<img src="supporting_files/Salt_Lake_City_Downtown.png"></img>
+	<img src="supporting_files/Package_Destinations.PNG"></img>
 </p>
 
-## Additional Comments
 As of submitting this project, it holds one of the fastest records for the least amount of miles to deliver all packages, at 76.1 total miles! Thank you for checking out this GitHub repository!
 
 ## Sources
