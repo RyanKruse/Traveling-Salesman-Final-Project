@@ -500,7 +500,7 @@ class Hub:
         until all cities are visited. Once the basecase is reached, then it rolls back up and triggers the next instance
         of the for loop, and going down the chain of traveling again, until all for loops are completed.
 
-        The tree of recursive calls looks like this to look at all the weights of visiting 4 cities.
+        The tree of recursive calls looks like this to look at all the weights of visiting 4 locations.
 
          Layer 1:                     ___________________[T,F,F,F]___________________                   One City Visited
                                      /                       |                       \
