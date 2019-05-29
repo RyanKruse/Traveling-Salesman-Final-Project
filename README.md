@@ -1,24 +1,20 @@
 # Traveling Salesman Final Project
 In this final project, I apply the algorithms and data structures studied to solve a variation of the traveling salesman problem. This program is designed to find the shortest route to deliver all packages while incurring the least number of miles. This program follows all simulation rules and meets the special requirements for all package deliveries.
 
-## Project Objective
-
 <p align="center">
-	<img src="supporting_files/Package_Destinations.PNG"></img>
+	<img src="supporting_files/Truck_1_Image.PNG"></img>
 </p>
+
+## Project Objective
 
 Amazon.com needs to determine the best route and delivery distribution for their Daily Local Deliveries (DLD) because packages are not currently being consistently delivered by their promised deadline. The Salt Lake City Fulfillment Center has three trucks, two drivers, and an average of 40 Prime packages to deliver each day; each package has specific criteria and delivery requirements.
 
-Amazon Logistics has tasked you to determine the best algorithm, write code, and present a solution where all 40 packages, listed in the attached "Package Table File,"" will be delivered on time with the least number of miles added to the combined mileage total of all trucks. The specific delivery locations and distances to each location are given in the attached "Distance Matrix File."" In addition, you should keep in mind that the supervisor should be able to see, at assigned points, the progress of each truck and its packages listed by any of the variables listed in the “Package Table File,” including what has been delivered and what time the delivery occurred.
+Amazon Logistics has tasked you to determine the best algorithm, write code, and present a solution where all 40 packages, listed in the attached "Package Table File," will be delivered on time with the least number of miles added to the combined mileage total of all trucks. The specific delivery locations and distances to each location are given in the attached "Distance Matrix File." In addition, you should keep in mind that the supervisor should be able to see, at assigned points, the progress of each truck and its packages listed by any of the variables listed in the “Package Table File,” including what has been delivered and what time the delivery occurred.
 
 The intent is to use this solution (program) for this specific location and to use the same program in many cities in each state where Amazon.com has a presence.
 
 
 ## Data Structures
-
-<p align="center">
-	<img src="supporting_files/Truck_1_Image.PNG"></img>
-</p>
 
 The environment runs in Python 3.6, requires no external libraries or APIs, and the IDE of choice is Pycharm. The communication protocol used in this project is by storing all data in class variables and executing all algorithms from class functions. Should one class need another variable from another class, a reference is made for that class and the variable is copied from it. The variable contained in each class are useful for executing the functions located in that class. The Hub class contains loading algorithms, the Truck class contains delivery algorithms, the Simulation class contains ticking algorithms, and the Clock class contains time algorithm.
 
@@ -90,9 +86,6 @@ If truck is under capacity then
 		Save package IDs
 	Load truck with saved package IDs – O(N)
 ```
-<p align="center">
-	<img src="supporting_files/Random_Snipit.PNG"></img>
-</p>
 
 The second algorithm <i>Load_Truck</i> will prioritize which packages should be loaded onto the truck. It starts by selecting which packages have delivery deadlines and loads these packages first. Next, it loops M number of times and begins randomly selecting packages to load onto the truck. Each loop calls the <i>Hamiltonian Cycle</i> algorithm to find the lowest route miles to deliver all packages to their destinations. If the route miles is the lowest seen out of all M loops it will save the package IDs. When the loop finishes, the truck is loaded with the saved package IDs.
 
@@ -124,7 +117,7 @@ The third algorithm <i>Hamiltonian_Cycle</i> finds the lowest mileage route to d
 
 ## Additional Comments
 
-As of submitting this project, it holds one of the best records for the least amount of miles to deliver all packages, at 76.1 total miles! Thank you for checking out this GitHub repository!
+As of submitting this project, it holds a record for the least amount of miles to deliver all packages at 76.1 total miles. Thank you for checking out this GitHub repository! This program was very fun to build.
 
 ## Sources
 1.	Lysecky, R. and Vahid, F. (2019). C950: Data Structures and Algorithms II. [online] ZyBooks.com. Available at: 	https://learn.zybooks.com/zybook/WGUC950AY20182019 [Accessed 20 May 2019].
