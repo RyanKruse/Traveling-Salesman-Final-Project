@@ -344,17 +344,13 @@ class Hub:
 
     def duplicate_max_load(self, bay, ids, indexes, hub, count):
         """Remove packages that have shared addresses until below truck capacity. O(N^3)."""
-        if count > TRUCK_STORAGE_LIMIT:
-            while True:
-                for package in bay[:]:
-                    # Removes non-grouped, shared-address packages.
-                    if package[2] != "Group":
-                        for pair in bay[:]:
-                            if pair[-1] == package[-1]:
-                                bay, ids, indexes, hub, count = self.unloading(pair, bay, ids, indexes, hub, count)
-                        break
-                # Breaks loop when equal or below storage limit.
-                if count <= TRUCK_STORAGE_LIMIT:
+        while count > TRUCK_STORAGE_LIMIT:
+            for package in bay[:]:
+                # Removes non-grouped, shared-address packages.
+                if package[2] != "Group":
+                    for pair in bay[:]:
+                        if pair[-1] == package[-1]:
+                            bay, ids, indexes, hub, count = self.unloading(pair, bay, ids, indexes, hub, count)
                     break
         return bay, ids, indexes, hub, count
 
